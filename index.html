@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a0f">
+<title>FRAGMENTOS — Uma jornada para Gaby</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <header id="topbar">
+    <div class="brand">FRAGMENTOS <small>uma jornada para Gaby</small></div>
+    <div class="hud">
+      <span id="chapterLabel">Prólogo</span>
+      <span id="memoryLabel">✦ 0/12</span>
+      <span id="progressLabel">0%</span>
+      <button id="soundBtn" class="iconBtn" aria-label="Música">♫</button>
+      <button id="menuBtn" class="iconBtn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="menuScreen" class="screen active">
+      <div class="menuHero">
+        <p class="eyebrow">04 • 01 • 2026</p>
+        <h1>Nem toda história precisa ser perfeita para ser verdadeira.</h1>
+        <p class="lead">Uma aventura sobre distância, lembranças, erros, cuidado, escolhas e aquilo que ainda pode ser construído.</p>
+        <div class="menuActions">
+          <button id="newGameBtn" class="primary">Começar a jornada</button>
+          <button id="continueBtn" class="secondary hidden">Continuar</button>
+        </div>
+        <p class="micro">PC: WASD/setas para andar • E/Enter para interagir • Esc abre o menu. No celular, use os controles na tela.</p>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div id="stage" class="stage">
+        <canvas id="gameCanvas" width="1280" height="720" aria-label="Jogo 2D Fragmentos"></canvas>
+        <div id="cinematicBars" class="cinematicBars hidden"><i></i><i></i></div>
+        <div id="chapterCard" class="chapterCard hidden"><small id="chapterNum">CAPÍTULO</small><h2 id="chapterTitle"></h2><p id="chapterSubtitle"></p></div>
+        <div id="objectiveBox" class="objectiveBox"><small>OBJETIVO</small><span id="objectiveText"></span></div>
+        <div id="interactHint" class="interactHint hidden">E • Interagir</div>
+        <div id="toast" class="toast hidden"></div>
+
+        <aside id="inventoryPanel" class="sidePanel hidden">
+          <div class="panelHead"><div><small>COLEÇÃO</small><h3>Memórias</h3></div><button data-close="inventoryPanel">×</button></div>
+          <div id="inventoryGrid" class="inventoryGrid"></div>
+        </aside>
+
+        <aside id="pausePanel" class="sidePanel pausePanel hidden">
+          <div class="panelHead"><div><small>PAUSA</small><h3>Fragmentos</h3></div><button data-close="pausePanel">×</button></div>
+          <button id="resumeBtn" class="wide">Continuar</button>
+          <button id="inventoryBtn" class="wide">Ver memórias</button>
+          <button id="restartChapterBtn" class="wide">Recomeçar capítulo</button>
+          <button id="backMenuBtn" class="wide danger">Voltar ao início</button>
+        </aside>
+
+        <div id="dialogBox" class="dialogBox hidden" role="dialog" aria-live="polite">
+          <div class="portrait"><div id="portraitGlyph">✦</div></div>
+          <div class="dialogBody">
+            <div id="speakerName" class="speakerName"></div>
+            <p id="dialogText"></p>
+            <div id="choiceList" class="choiceList"></div>
+            <div class="dialogFooter"><span id="dialogCounter"></span><button id="dialogNext" class="primary small">Continuar</button></div>
+          </div>
+        </div>
+
+        <div id="photoModal" class="photoModal hidden">
+          <button id="photoClose" class="photoClose">×</button>
+          <img id="photoView" alt="Memória de vocês">
+          <p id="photoCaption"></p>
+        </div>
+
+        <div id="puzzleOverlay" class="puzzleOverlay hidden">
+          <div class="puzzleCard">
+            <div class="panelHead"><div><small id="puzzleKicker">PUZZLE</small><h3 id="puzzleTitle"></h3></div><button id="puzzleClose">×</button></div>
+            <p id="puzzlePrompt"></p>
+            <div id="puzzleContent"></div>
+            <p id="puzzleFeedback" class="feedback"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobileControls" aria-label="Controles móveis">
+        <div class="dpad">
+          <button data-key="up">▲</button>
+          <div><button data-key="left">◀</button><button data-key="down">▼</button><button data-key="right">▶</button></div>
+        </div>
+        <div class="mobileActions"><button id="mobileInteract">✦</button><button id="mobileInventory">▦</button></div>
+      </div>
+    </section>
+
+    <section id="endingScreen" class="screen">
+      <div class="endingWrap">
+        <div id="completionPhase">
+          <p class="eyebrow">JORNADA CONCLUÍDA</p>
+          <h2>Algumas coisas foram encontradas.<br>Outras ainda continuam.</h2>
+          <div id="statList" class="statList"></div>
+          <div class="completionMeter"><i id="completionBar"></i></div>
+          <strong id="completionPercent">0%</strong>
+        </div>
+        <article id="finalLetter" class="finalLetter hidden">
+          <p>Gaby,</p>
+          <p>Eu poderia terminar esse jogo tentando deixar a nossa história perfeita. Mas não seria verdadeiro.</p>
+          <p>Existiram momentos bonitos, saudade, risadas, vontade de ficar perto. Também existiram erros meus, discussões, silêncio e coisas do passado que machucaram quando voltaram para o presente.</p>
+          <p>Eu não quero usar uma carta para apagar nenhuma dessas coisas. Nem quero que você leia isso como uma obrigação de esquecer, confiar de novo imediatamente ou sentir alguma coisa só porque eu gostaria.</p>
+          <p>O que eu posso fazer é reconhecer quando eu erro, aprender a escutar antes de me defender, respeitar o seu espaço e entender que confiança não é uma frase. É aquilo que a gente constrói nas atitudes, devagar.</p>
+          <p>Se algumas partes desta jornada foram difíceis, é porque eu não queria contar apenas a versão bonita. Você merece sinceridade também nas partes que não cabem numa fotografia.</p>
+          <p>E mesmo assim, quando eu penso em tudo o que vivemos desde aquele começo, ainda existe algo muito simples que eu quero guardar.</p>
+          <p class="letterBig">Eu amo você.</p>
+          <p>Não como final de uma história. Como uma escolha que precisa continuar sendo demonstrada.</p>
+          <p class="signature">04.01.2026<br><b>Continua…</b></p>
+        </article>
+      </div>
+    </section>
+  </main>
+  <audio id="soundtrack" src="assets/trevo-tu.mp3" preload="metadata" loop></audio>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
